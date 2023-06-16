@@ -3,9 +3,10 @@ import axios from "axios";
 import { getCookie } from "cookies-next";
 import { GetServerSideProps, GetServerSidePropsContext, NextPage } from "next";
 import styles from './[id].module.scss';
-import { PostInfoCard } from "@/components/PostInfoCard/PostInfoCard";
-import { SubredditInfoCard } from "@/components/SubredditInfoCard/SubredditInfoCard";
+import { SubredditInfoCard } from "@/components/Post/SubredditInfoCard/SubredditInfoCard";
 import { GoHomeBtn } from "@/components/ui-components/GoHomeBtn/GoHomeBtn";
+import { Post } from "@/components/Post/Post";
+import { useRouter } from "next/router";
 
 const postProps = ['title', 'thumbnail', 'permalink', 'author', 'media', 'subreddit_name_prefixed', 'selftext']
 const subredditProps = ['title', 'public_description', 'url', 'icon_img', 'banner_img', 'subscribers']
@@ -65,15 +66,12 @@ export interface IPostPageProps {
   subredditData: ISubredditData;
 }
 
-export const PostPage: NextPage<IPostPageProps>  = ({postData, subredditData}) => {
+export const PostPage: NextPage<IPostPageProps>  = () => {
+  const router = useRouter()
+  const { id } = router.query;
+
   return (
-    <div className={styles.post}>
-      <PostInfoCard postData={postData}/>
-
-      <SubredditInfoCard subredditData={subredditData} prefix={postData.subreddit_name_prefixed}/>
-
-      <GoHomeBtn />
-    </div>
+    <Post postID={id as string}/>
   )
 }
 

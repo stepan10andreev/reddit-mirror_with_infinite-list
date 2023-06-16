@@ -34,8 +34,6 @@ export const CardList: FC = () =>  {
     shouldRetryOnError: false
   })
 
-  console.log(error)
-
   useEffect(() => {
     if (error) setErrorStatus(String(error.response?.status))
   }, [error])

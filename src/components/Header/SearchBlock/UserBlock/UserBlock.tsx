@@ -14,13 +14,6 @@ interface IUserBlockProps {
 
 const AUTH_URL = `https://www.reddit.com/api/v1/authorize?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&response_type=code&state=random_string&redirect_uri=${process.env.NEXT_PUBLIC_API_URL}/auth&duration=permanent&scope=read identity`;
 
-const imageStyle = {
-  width: '100%',
-  height: '100%',
-  'object-fit': 'cover',
-  'border-radius': '100%',
-};
-
 export const UserBlock: FC<IUserBlockProps> = ({ avatarSrc, username}) => {
   const { userData, isLoading, isAuth } = useUserData();
 
