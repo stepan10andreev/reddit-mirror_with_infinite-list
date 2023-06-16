@@ -13,7 +13,7 @@ const fetchPost = async (postID: string) => {
   })
   const postData = data.data.children.map((item: { data: any }) => item.data)
   const optimizatedPostData = getOptimizatedData(postData, postProps)
-  return optimizatedPostData
+  return optimizatedPostData[0]
 }
 
 export function usePostData (postID: string) {
@@ -22,6 +22,6 @@ export function usePostData (postID: string) {
   return {
     postData: data,
     isLoadingPost: isLoading,
-    error
+    postLoadError: error
   }
 }

@@ -7,6 +7,7 @@ import axios from "axios";
 import useSWR from "swr";
 import { getOptimizatedData } from "@/utils/getOptimizatedData";
 import { usePostData } from "../Hooks/usePostData";
+import { useSubredditData } from "../Hooks/useSubredditData";
 
 
 // const postProps = ['title', 'thumbnail', 'permalink', 'author', 'media', 'subreddit_name_prefixed', 'selftext']
@@ -28,9 +29,10 @@ interface IPost {
 
 export const Post: FC<IPost> = ({ postID }) => {
 
-  const { postData, error, isLoadingPost } = usePostData(postID)
+  const { postData, postLoadError, isLoadingPost } = usePostData(postID)
+  const { subredditData, subreddigLoadError, isLoadingSubreddit } = useSubredditData(postID)
 
-  console.log(postData);
+  console.log(subredditData);
 
   return (
     <div className={styles.post}>
