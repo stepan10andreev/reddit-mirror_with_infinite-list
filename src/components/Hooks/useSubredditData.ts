@@ -2,6 +2,7 @@ import { getOptimizatedData } from "@/utils/getOptimizatedData"
 import axios from "axios"
 import { getCookie } from "cookies-next"
 import useSWR from "swr"
+import { ISubredditData } from "../Post/SubredditInfoCard/SubredditInfoCard"
 
 const subredditProps = ['title', 'public_description', 'url', 'icon_img', 'banner_img', 'subscribers']
 
@@ -18,13 +19,13 @@ const fetchPost = async (postID: string) => {
   })
 
   const subredditData = subreddit.data.data.children.map((item: { data: any }) => item.data)
-  const optimizatedSubredditData = getOptimizatedData(subredditData, subredditProps)
-  return optimizatedSubredditData[0]
+  // const optimizatedSubredditData = getOptimizatedData(subredditData, subredditProps)
+  return subredditData[0]
 }
 
 export function useSubredditData (postID: string) {
 
-  const { data, error, isLoading } = useSWR(postID, fetchPost);
+  const { data, error, isLoading } = useSWR<ISubredditData>(postID, fetchPost);
 
   return {
     subredditData: data,

@@ -1,4 +1,4 @@
-import { getOptimizatedData } from "@/utils/getOptimizatedData";
+import { IObj, getOptimizatedData } from "@/utils/getOptimizatedData";
 import axios from "axios";
 import { getCookie } from "cookies-next";
 import { GetServerSideProps, GetServerSidePropsContext, NextPage } from "next";
@@ -42,31 +42,31 @@ export const getServerSideProps: GetServerSideProps = async ({ query, req, res }
   }
 }
 
-export interface IPostData {
-  title: string;
-  media: null | {reddit_video: {scrubber_media_url: string}};
-  thumbnail: string;
-  selftext: string;
-  permalink: string;
-  author: string;
-  subreddit_name_prefixed: string;
-}
+// export interface IPostData {
+//   title: string;
+//   media: null | {reddit_video: {scrubber_media_url: string}};
+//   thumbnail: string;
+//   selftext: string;
+//   permalink: string;
+//   author: string;
+//   subreddit_name_prefixed: string;
+// }
 
-export interface ISubredditData {
-  banner_img: string;
-  icon_img: string;
-  title: string;
-  public_description: string;
-  subscribers: string;
-  url: string;
-}
+// export interface ISubredditData {
+//   banner_img: string;
+//   icon_img: string;
+//   title: string;
+//   public_description: string;
+//   subscribers: string;
+//   url: string;
+// }
 
-export interface IPostPageProps {
-  postData: IPostData;
-  subredditData: ISubredditData;
-}
+// export interface IPostPageProps {
+//   postData: IPostData;
+//   subredditData: ISubredditData;
+// }
 
-export const PostPage: NextPage<IPostPageProps>  = () => {
+export const PostPage: NextPage = () => {
   const router = useRouter()
   const { id } = router.query;
 

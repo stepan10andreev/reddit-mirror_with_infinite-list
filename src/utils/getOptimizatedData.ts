@@ -1,5 +1,5 @@
-interface IObj {
-  [key: string]: string;
+export interface IObj {
+  [key: string]: any;
 }
 
 export function getOptimizatedData(array: any[], props: string[]) {

@@ -1,7 +1,17 @@
 import { FC, useState } from 'react';
 import styles from './PostInfoCard.module.scss';
 import Image from 'next/image';
-import { IPostData } from '@/pages/post/[id]';
+import { IObj } from '@/utils/getOptimizatedData';
+
+export interface IPostData extends IObj {
+  title: string;
+  media: null | {reddit_video: {scrubber_media_url: string}};
+  thumbnail: string;
+  selftext: string;
+  permalink: string;
+  author: string;
+  subreddit_name_prefixed: string;
+}
 
 interface IPostInfoCard {
   postData: IPostData

@@ -1,7 +1,15 @@
 import { FC } from 'react';
 import styles from './SubredditInfoCard.module.scss';
 import Image from 'next/image';
-import { ISubredditData } from '@/pages/post/[id]';
+
+export interface ISubredditData {
+  banner_img: string;
+  icon_img: string;
+  title: string;
+  public_description: string;
+  subscribers: string;
+  url: string;
+}
 
 interface ISubredditInfoCard {
   subredditData: ISubredditData,

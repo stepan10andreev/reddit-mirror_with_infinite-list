@@ -1,6 +1,6 @@
 import { FC } from "react"
-import { PostInfoCard } from "./PostInfoCard/PostInfoCard"
-import { SubredditInfoCard } from "./SubredditInfoCard/SubredditInfoCard"
+import { IPostData, PostInfoCard } from "./PostInfoCard/PostInfoCard"
+import { ISubredditData, SubredditInfoCard } from "./SubredditInfoCard/SubredditInfoCard"
 import styles from './Post.module.scss';
 import { getCookie } from "cookies-next";
 import axios from "axios";
@@ -8,6 +8,7 @@ import useSWR from "swr";
 import { getOptimizatedData } from "@/utils/getOptimizatedData";
 import { usePostData } from "../Hooks/usePostData";
 import { useSubredditData } from "../Hooks/useSubredditData";
+import { BounceLoader } from "react-spinners";
 
 
 // const postProps = ['title', 'thumbnail', 'permalink', 'author', 'media', 'subreddit_name_prefixed', 'selftext']
@@ -31,14 +32,28 @@ export const Post: FC<IPost> = ({ postID }) => {
 
   const { postData, postLoadError, isLoadingPost } = usePostData(postID)
   const { subredditData, subreddigLoadError, isLoadingSubreddit } = useSubredditData(postID)
-
-  console.log(subredditData);
-
+  console.log(postData)
   return (
     <div className={styles.post}>
-      {/* <PostInfoCard postData={data}/> */}
-      here
-      {/* <SubredditInfoCard subredditData={data} prefix={data.subreddit_name_prefixed}/> */}
+
+      {isLoadingPost && isLoadingSubreddit && (
+        <div role='alert' style={{textAlign: 'center'}}>
+          <BounceLoader color="#CC6633" size={80}/>
+        </div>
+      )}
+
+      {subredditData && subredditData && (
+        <>
+          <PostInfoCard postData={postData as IPostData}/>
+          <SubredditInfoCard subredditData={subredditData as ISubredditData} prefix={postData?.subreddit_name_prefixed as string}/>
+        </>
+      )}
+
+      {(postLoadError || subreddigLoadError) && (
+        <div role='alert' style={{textAlign: 'center'}}>
+          <p>{postLoadError.message || subreddigLoadError.message}</p>
+        </div>
+      )}
     </div>
   )
 }
