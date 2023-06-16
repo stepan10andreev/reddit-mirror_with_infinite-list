@@ -9,6 +9,7 @@ import { getOptimizatedData } from "@/utils/getOptimizatedData";
 import { usePostData } from "../Hooks/usePostData";
 import { useSubredditData } from "../Hooks/useSubredditData";
 import { BounceLoader } from "react-spinners";
+import { GoHomeBtn } from "../ui-components/GoHomeBtn/GoHomeBtn";
 
 
 // const postProps = ['title', 'thumbnail', 'permalink', 'author', 'media', 'subreddit_name_prefixed', 'selftext']
@@ -35,8 +36,9 @@ export const Post: FC<IPost> = ({ postID }) => {
 
   return (
     <div className={styles.post}>
+      <GoHomeBtn />
 
-      {isLoadingPost && isLoadingSubreddit && (
+     {isLoadingPost && isLoadingSubreddit && (
         <div role='alert' style={{textAlign: 'center'}}>
           <BounceLoader color="#CC6633" size={80}/>
         </div>
@@ -49,7 +51,7 @@ export const Post: FC<IPost> = ({ postID }) => {
         </>
       )}
 
-      {(postLoadError || subreddigLoadError) && (
+      {(postLoadError || subreddigLoadError && (!isLoadingPost && !isLoadingSubreddit)) && (
         <div role='alert' style={{textAlign: 'center'}}>
           <p>{postLoadError.message || subreddigLoadError.message}</p>
         </div>

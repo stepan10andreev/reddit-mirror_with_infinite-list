@@ -7,11 +7,13 @@
   overflow-x: hidden;
   overflow-y: auto;
   background: #FFFFFF;
-  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.15);
+  box-shadow:0px 0px 500px 300px rgb(0 0 0 / 50%);
+  // box-shadow: 0px 0px 20px 20px rgba(97, 97, 97, 0.26);
   border-radius: 7px;
   min-width: 200px;
   min-height: 160px;
   max-width: 80%;
+  // width: 70%;
   padding: 24px;
   margin-bottom: 25px;
 }
@@ -27,4 +29,16 @@
   margin: -24px;
   color: #000
 }
+
+// .modal > div {
+//   flex-direction: column;
+//   // margin-top: 200px;
+// }
+
+// @media all and (min-width: 992px) {
+//   .modal > div {
+//     flex-direction: row;
+//     // margin-top: 200px;
+//   }
+// }
 

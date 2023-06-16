@@ -12,7 +12,6 @@ import { createModuleResolutionCache } from 'typescript'
 const HomePage: NextPage = () => {
   const router = useRouter();
 
-  console.log(router.query.post)
   return (
     <>
       <Head>
