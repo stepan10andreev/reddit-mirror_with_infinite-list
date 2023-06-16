@@ -1,3 +1,29 @@
+.button {
+  margin: 10px auto 0;
+  display: flex;
+  padding: 10px 15px;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 23px;
+  border: 3px solid  rgb(246, 66, 0);
+  /* color: rgb(255, 255, 255); */
+  background-color: rgb(255, 184, 142);
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.button:focus-visible,
+.button:hover {
+  color: rgb(255, 224, 211);
+  background-color: rgb(246, 66, 0);
+}
+
+.button:active {
+  color: rgb(47, 47, 47);
+  background-color: rgb(255, 158, 101);
+}
+
+
 @media all and (min-width: 1024px) {
   .cardsList {
     padding: 40px 0;

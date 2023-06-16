@@ -10,37 +10,37 @@ import { ICardProps } from '@/components/CardList/Card/Card'
 import { getOptimizatedData } from '@/utils/getOptimizatedData'
 
 
-const props = ['id', 'title', 'thumbnail', 'permalink', 'author', 'score', 'num_comments', 'created', 'media']
+// const props = ['id', 'title', 'thumbnail', 'permalink', 'author', 'score', 'num_comments', 'created', 'media']
 
-export const getServerSideProps: GetServerSideProps = async ({ req, res }: GetServerSidePropsContext) => {
-  const token = getCookie('token', { req, res })
+// export const getServerSideProps: GetServerSideProps = async ({ req, res }: GetServerSidePropsContext) => {
+//   const token = getCookie('token', { req, res })
 
-  if (!token) return {
-    props: {postsData: []}
-  }
+//   if (!token) return {
+//     props: {postsData: []}
+//   }
 
-  const {data} = await axios.get('https://oauth.reddit.com/r/all/hot.json?sr_detail=true', {
-    headers: { Authorization: `bearer ${token}` },
-    params: {
-      // limit: 10,
-      // after: afterNext,
-    }
-  })
-  const postsData = data.data.children.map((item: { data: any }) => item.data)
+//   const {data} = await axios.get('https://oauth.reddit.com/r/all/hot.json?sr_detail=true', {
+//     headers: { Authorization: `bearer ${token}` },
+//     params: {
+//       // limit: 10,
+//       // after: afterNext,
+//     }
+//   })
+//   const postsData = data.data.children.map((item: { data: any }) => item.data)
 
-  const optimizatedData = getOptimizatedData(postsData, props)
+//   const optimizatedData = getOptimizatedData(postsData, props)
 
-  return {
-    props: {postsData: optimizatedData},
-  }
-}
+//   return {
+//     props: {postsData: optimizatedData},
+//   }
+// }
 
-export interface IHomePageProps {
-  postsData: ICardProps[];
-}
+// export interface IHomePageProps {
+//   postsData: ICardProps[];
+// }
 
 
-const HomePage: NextPage<IHomePageProps> = ({postsData}) => {
+const HomePage: NextPage = () => {
   return (
     <>
       <Head>
@@ -52,7 +52,7 @@ const HomePage: NextPage<IHomePageProps> = ({postsData}) => {
       <Layout>
         <Header />
         <Content>
-          <CardList postsData={postsData}/>
+          <CardList />
         </Content>
       </Layout>
     </>
