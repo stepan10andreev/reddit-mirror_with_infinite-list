@@ -4,8 +4,15 @@ import { Header } from '@/components/Header/Header'
 import { Content } from '@/components/Content/Content'
 import { CardList } from '@/components/CardList/CardList'
 import { NextPage } from 'next'
+import { Modal } from '@/components/ui-components/Modal/Modal'
+import { Post } from '@/components/Post/Post'
+import { useRouter } from 'next/router'
+import { createModuleResolutionCache } from 'typescript'
 
 const HomePage: NextPage = () => {
+  const router = useRouter();
+
+  console.log(router.query.post)
   return (
     <>
       <Head>
@@ -20,6 +27,12 @@ const HomePage: NextPage = () => {
           <CardList />
         </Content>
       </Layout>
+
+    {!!router.query.post && (
+      <Modal>
+        <Post postID={router.query.post as string}/>
+      </Modal>
+    )}
     </>
   )
 }

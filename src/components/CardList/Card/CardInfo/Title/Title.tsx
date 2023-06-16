@@ -9,12 +9,11 @@ interface Props {
 }
 
 export const Title: FC<Props> = ({title, permalink, id}) => {
-  // const [isModalOpened, setIsModalOpened] = useState(false);
-
   return (
     <h2 className={styles.title} >
           <Link
-            href={`/post/${id}`}
+            href={`/?post=${id}`}
+            as={`/post/${id}`}
             className={styles.postLink}
           >
             {title}
@@ -24,19 +23,3 @@ export const Title: FC<Props> = ({title, permalink, id}) => {
 }
 
 
-
-// export const Title: FC<Props> = ({title, permalink, id}) => {
-//   // const [isModalOpened, setIsModalOpened] = useState(false);
-
-//   return (
-//     <h2 className={styles.title} >
-//           <Link
-//             href={`/?post=${id}`}
-//             as={`/post/${id}`}
-//             className={styles.postLink}
-//           >
-//             {title}
-//           </Link>
-//     </h2>
-//   );
-// }

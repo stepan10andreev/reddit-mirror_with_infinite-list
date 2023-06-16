@@ -18,7 +18,7 @@ export const Modal: FC<IModal> = ({onClose, children}) => {
     ref.current = document.querySelector<HTMLDivElement>("#modal_root");
 
     setMounted(true);
-
+    console.log(ref.current)
     function handleClick(event: MouseEvent) {
       if (event.target instanceof Node && !ref.current?.contains(event.target)) {
         router.push('/')

@@ -8,39 +8,39 @@ import { GoHomeBtn } from "@/components/ui-components/GoHomeBtn/GoHomeBtn";
 import { Post } from "@/components/Post/Post";
 import { useRouter } from "next/router";
 
-const postProps = ['title', 'thumbnail', 'permalink', 'author', 'media', 'subreddit_name_prefixed', 'selftext']
-const subredditProps = ['title', 'public_description', 'url', 'icon_img', 'banner_img', 'subscribers']
+// const postProps = ['title', 'thumbnail', 'permalink', 'author', 'media', 'subreddit_name_prefixed', 'selftext']
+// const subredditProps = ['title', 'public_description', 'url', 'icon_img', 'banner_img', 'subscribers']
 
-export const getServerSideProps: GetServerSideProps = async ({ query, req, res }: GetServerSidePropsContext) => {
-  const token = getCookie('token', { req, res });
+// export const getServerSideProps: GetServerSideProps = async ({ query, req, res }: GetServerSidePropsContext) => {
+//   const token = getCookie('token', { req, res });
 
-  if (!token) return {
-    redirect: {
-      destination: '/',
-      permanent: false,
-    },
-  };
+//   if (!token) return {
+//     redirect: {
+//       destination: '/',
+//       permanent: false,
+//     },
+//   };
 
-  const {data} = await axios.get(`https://oauth.reddit.com/api/info.json?id=t3_${query.id}`, {
-    headers: { Authorization: `bearer ${token}` },
-  })
+//   const {data} = await axios.get(`https://oauth.reddit.com/api/info.json?id=t3_${query.id}`, {
+//     headers: { Authorization: `bearer ${token}` },
+//   })
 
-  const postData = data.data.children.map((item: { data: any }) => item.data)
-  const optimizatedPostData = getOptimizatedData(postData, postProps)
-  // console.log(postData)
+//   const postData = data.data.children.map((item: { data: any }) => item.data)
+//   const optimizatedPostData = getOptimizatedData(postData, postProps)
+//   // console.log(postData)
 
-  const subreddit = await axios.get(`https://oauth.reddit.com/api/info.json?id=${postData[0].subreddit_id}`, {
-    headers: { Authorization: `bearer ${token}` },
-  })
+//   const subreddit = await axios.get(`https://oauth.reddit.com/api/info.json?id=${postData[0].subreddit_id}`, {
+//     headers: { Authorization: `bearer ${token}` },
+//   })
 
-  const subredditData = subreddit.data.data.children.map((item: { data: any }) => item.data)
-  const optimizatedSubredditData = getOptimizatedData(subredditData, subredditProps)
-  // console.log(subredditData)
+//   const subredditData = subreddit.data.data.children.map((item: { data: any }) => item.data)
+//   const optimizatedSubredditData = getOptimizatedData(subredditData, subredditProps)
+//   // console.log(subredditData)
 
-  return {
-    props: {postData: optimizatedPostData[0], subredditData: optimizatedSubredditData[0]},
-  }
-}
+//   return {
+//     props: {postData: optimizatedPostData[0], subredditData: optimizatedSubredditData[0]},
+//   }
+// }
 
 // export interface IPostData {
 //   title: string;

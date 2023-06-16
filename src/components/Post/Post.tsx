@@ -32,7 +32,7 @@ export const Post: FC<IPost> = ({ postID }) => {
 
   const { postData, postLoadError, isLoadingPost } = usePostData(postID)
   const { subredditData, subreddigLoadError, isLoadingSubreddit } = useSubredditData(postID)
-  console.log(postData)
+
   return (
     <div className={styles.post}>
 
