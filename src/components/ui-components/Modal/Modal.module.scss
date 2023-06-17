@@ -13,7 +13,7 @@
   min-width: 200px;
   min-height: 160px;
   max-width: 80%;
-  // width: 70%;
+  width: 100%;
   padding: 24px;
   margin-bottom: 25px;
 }
@@ -30,15 +30,9 @@
   color: #000
 }
 
-// .modal > div {
-//   flex-direction: column;
-//   // margin-top: 200px;
-// }
-
-// @media all and (min-width: 992px) {
-//   .modal > div {
-//     flex-direction: row;
-//     // margin-top: 200px;
-//   }
-// }
+@media all and (min-width: 1200px) {
+  .modal {
+    max-width: 1024px;
+  }
+}
 

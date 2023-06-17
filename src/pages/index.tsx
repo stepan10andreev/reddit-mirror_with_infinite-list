@@ -29,7 +29,7 @@ const HomePage: NextPage = () => {
 
     {!!router.query.post && (
       <Modal>
-        <Post postID={router.query.post as string}/>
+        <Post postID={router.query.post as string} forModal={true}/>
       </Modal>
     )}
     </>

@@ -21,10 +21,38 @@
   }
 }
 
+.post.forModal {
+  padding: 5px;
+  margin: 0;
+}
 
-@media all and (min-width: 756px) {
-  .post  {
+.post.forModal > div:first-child > h1 {
+  font-size: 14px;
+}
+
+.post.forModal > div:first-child > a {
+  font-size: 12px;
+}
+
+@media all and (min-width: 992px) {
+  .post.forModal {
+    padding: 15px 30px;
     flex-direction: row;
-    // margin-top: 200px;
+  }
+}
+
+@media all and (min-width: 992px) {
+  .post {
+    flex-direction: row;
+  }
+
+  .post > div:nth-child(3) {
+    width: 40%;
+  }
+}
+
+@media all and (min-width: 576px) {
+  .post > div:nth-child(3) {
+    width: 55%;
   }
 }
