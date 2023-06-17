@@ -6,8 +6,6 @@ import { getCookie } from "cookies-next";
 import useSWRInfinite from 'swr/infinite'
 import { PropagateLoader } from "react-spinners";
 
-// type ICardListsProps = Pick<IHomePageProps, 'postsData'>
-
 const fetchPosts = async (url: string) => {
   const token = getCookie('token')
 
@@ -63,18 +61,18 @@ export const CardList: FC = () =>  {
 
           return posts.children.map((post: any) => (
             <Card
-            key={post.data.id}
-            title={post.data.title}
-            url={post.data.url}
-            thumbnail={post.data.thumbnail}
-            permalink={post.data.permalink}
-            author={post.data.author}
-            score={post.data.score}
-            num_comments={post.data.num_comments}
-            created={post.data.created}
-            media={post.data.media}
-            id={post.data.id}
-          />))
+              key={post.data.id}
+              title={post.data.title}
+              url={post.data.url}
+              thumbnail={post.data.thumbnail}
+              permalink={post.data.permalink}
+              author={post.data.author}
+              score={post.data.score}
+              num_comments={post.data.num_comments}
+              created={post.data.created}
+              media={post.data.media}
+              id={post.data.id}
+            />))
         })}
 
       {isLoading && (
