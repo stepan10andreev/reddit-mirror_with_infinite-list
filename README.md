@@ -1,5 +1,8 @@
 # Новостная лента Reddit
 
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" width='30'/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original-wordmark.svg" width='30'/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"  width='30'/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" width='30'/>
+          
+          
 Приложение, представляет собой аналог ранее написанного приложения [Зеркало Reddit c новостной лентой из 25 лучших постов](https://github.com/stepan10andreev/reddit-mirror).
 
 Приложение также написано на [Next.js](https://nextjs.org/) с использованием [API Reddit](https://www.reddit.com/dev/api/) и протокола авторизации [OAuth2](https://github.com/reddit-archive/reddit/wiki/OAuth2).
